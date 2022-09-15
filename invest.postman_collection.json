@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "b3fba293-aca5-40ea-adfe-edfa7dec01ab",
+		"name": "invest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20700341"
+	},
+	"item": [
+		{
+			"name": "getPeopleAPI",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//Where name is R2-D2's skin color is white and blue",
+							"pm.test(\"R2-D2 has blue & white skin color\", function () {",
+							"",
+							"     var obj = pm.response.json().results.find(e => e.name === \"R2-D2\");",
+							"     console.log(\"pos:\", obj);",
+							"     pm.expect(obj.skin_color).to.eql(\"white, blue\")",
+							"",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/people/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"people",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
